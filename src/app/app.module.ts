@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { SerialsService } from './services/serials.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { SerialsService } from './services/serials.service';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [SerialsService],
+  providers: [SerialsService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

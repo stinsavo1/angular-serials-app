@@ -5,7 +5,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2012-07-03T00:00:00+00:00'),
     season: 2,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 559
   },
   {
@@ -14,7 +14,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2009-03-08T00:00:00+00:00'),
     season: 2,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 611
   },
   {
@@ -23,7 +23,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2018-03-25T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'history', color: 'rgb(241,219,39)'}],
     duration: 600
   },
   {
@@ -32,7 +32,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2012-10-14T00:00:00+00:00'),
     season: 3,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 688
   },
   {
@@ -41,7 +41,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2011-04-14T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'}],
     duration: 600
   },
   {
@@ -50,7 +50,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2010-03-21T00:00:00+00:00'),
     season: 3,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 611
   },
   {
@@ -59,7 +59,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2013-10-20T00:00:00+00:00'),
     season: 4,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 688
   },
   {
@@ -68,7 +68,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2018-03-25T00:00:00+00:00'),
     season: 2,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'history', color: 'rgb(241,219,39)'}],
     duration: 600
   },
   {
@@ -77,7 +77,7 @@ export const SERIALS = [
     network: 'BBC',
     premiereDate: new Date('2011-06-05T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 360
   },
   {
@@ -86,7 +86,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2014-10-12T00:00:00+00:00'),
     season: 5,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 688
   },
   {
@@ -95,7 +95,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2019-04-14T00:00:00+00:00'),
     season: 8,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'}],
     duration: 300
   },
   {
@@ -104,7 +104,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2015-02-08T00:00:00+00:00'),
     season: 4,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'crime', color: '#a3a3a3'}],
     duration: 500
   },
   {
@@ -113,7 +113,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2015-10-12T00:00:00+00:00'),
     season: 6,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 688
   },
   {
@@ -122,7 +122,9 @@ export const SERIALS = [
     network: 'Netflix',
     premiereDate: new Date('2016-07-15T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'},
+      {name: 'horrors', color: '#000000'}
+    ],
     duration: 408
   },
   {
@@ -131,7 +133,7 @@ export const SERIALS = [
     network: 'BBC',
     premiereDate: new Date('2014-02-02T00:00:00+00:00'),
     season: 3,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 360
   },
   {
@@ -140,7 +142,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2016-10-23T00:00:00+00:00'),
     season: 7,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 688
   },
   {
@@ -149,7 +151,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2019-04-14T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'crime', color: '#a3a3a3'}],
     duration: 500
   },
   {
@@ -158,7 +160,9 @@ export const SERIALS = [
     network: 'Netflix',
     premiereDate: new Date('2017-08-27T00:00:00+00:00'),
     season: 2,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'},
+      {name: 'horrors', color: '#000000'}
+    ],
     duration: 459
   },
   {
@@ -167,7 +171,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2017-06-16T00:00:00+00:00'),
     season: 7,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'}],
     duration: 350
   },
   {
@@ -176,7 +180,7 @@ export const SERIALS = [
     network: 'BBC',
     premiereDate: new Date('2016-01-17T00:00:00+00:00'),
     season: 4,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 360
   },
   {
@@ -185,7 +189,7 @@ export const SERIALS = [
     network: 'HBO',
     premiereDate: new Date('2009-01-01T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'crime', color: '#a3a3a3'}, {name: 'thriller', color: 'rgba(31,101,179,0.63)'}],
     duration: 329
   },
   {
@@ -194,7 +198,9 @@ export const SERIALS = [
     network: 'Netflix',
     premiereDate: new Date('2019-07-04T00:00:00+00:00'),
     season: 3,
-    genre: [],
+    genre: [{name: 'drama', color: '#934dd6'}, {name: 'fantasy', color: 'rgb(149,114,87)'},
+      {name: 'horrors', color: '#000000'}
+    ],
     duration: 408
   },
   {
@@ -203,7 +209,7 @@ export const SERIALS = [
     network: 'AMC',
     premiereDate: new Date('2010-10-31T00:00:00+00:00'),
     season: 1,
-    genre: [],
+    genre: [{name: 'horrors', color: '#000000'}, {name: 'drama', color: '#934dd6'}],
     duration: 258
   },
 ];

@@ -3,14 +3,36 @@
         <div class="search-bar">
           <input class="dc-search" placeholder="Name" (keyup)="filterSubject.next($event.target.value)">
         </div>
-      </div>
+        <div class="custom-select">
+        <select class="select" (change)="filterDateSubject.next($event.target.value)">
+          <option class="options" value="all">All</option>
+          <option class="options" *ngFor="let year of years"
+                  [value]="year">
+            {{year}}
+          </option>
+        </select>
+          <select class="select" (change)="filterChannelSubject.next($event.target.value)">
+            <option class="options" value="all">All</option>
+            <option class="options" *ngFor="let channel of channels"
+                    [value]="channel">
+              {{channel}}
+            </option>
+          </select>
+        </div>
+    </div>
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
       [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell class="dc-content" *matCellDef="let element">{{element.name}} </td>
+        <td mat-cell class="dc-content" *matCellDef="let element">{{element.name}}
+          <div class="container-chips">
+          <span *ngFor="let item of element.genre">
+            <span class="chips" [style.background]="item.color">{{item.name}}</span>
+          </span>
+          </div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="season">

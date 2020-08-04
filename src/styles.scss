@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/global-variables";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  letter-spacing: 0.3px;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $main-background;
+}
+
+html, body { height: 100%; }
+
+.dc-input {
+  letter-spacing: 0.3px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px;
+  height: 32px;
+  color: $white-color;
+  line-height: 17px;
+  padding: 8px 8px 7px 12px;
+  box-sizing: border-box;
+  border: none;
+  background-color: #f2994a !important;
+  border-radius: 2px;
+}
+
+.dc-input::placeholder {
+  color: $white-color;
+}
+
+.dc-input:focus {
+  outline: none;
+}
+
+.dc-search {
+  @extend .dc-input;
+  background: url(assets/icons/search.svg) no-repeat right 12px center;
+  background-size: 14px;
+}
+
+.mat-paginator-outer-container {
+  background: $main-background;
+}
+
+.mat-sort-header-container {
+  color: $white-color;
+  font-size: 13px;
+}
+
+.mat-sort-header-arrow {
+  color: $white-color;
+}
+

@@ -10,6 +10,8 @@ import { tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Serials } from '../core/models/serials';
 import { SerialsLoadAction } from '../store/actions/serials.actions';
 import { selectAllSerials, selectSerialsError, selectSerialsLoading, selectSerialsTotal } from '../store/selectors/serials.selectors';
+import { SERIALS } from '../services/mock-serials';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-serials-table',
@@ -28,14 +30,23 @@ export class SerialsTableComponent implements OnInit, OnDestroy, AfterViewInit {
   public loading: boolean;
   public error$: Observable<boolean>;
   public filterSubject = new Subject<string>();
+  public filterDateSubject = new Subject<string>();
+  public filterChannelSubject = new Subject<string>();
   public defaultSort: Sort = { active: 'name', direction: 'asc' };
 
   private filter = '';
+  private filterYear = '';
+  private filterChannel = '';
+  public years: string[];
+  public genre: string[];
+  public channels: string[];
   private subscription: Subscription = new Subscription();
 
-  constructor(public store: Store<GlobalState>) { }
+  constructor(public store: Store<GlobalState>, private datePipe: DatePipe) { }
 
   public ngOnInit(): void {
+    this.years = this.uniqueValue(SERIALS.map(item => this.datePipe.transform(item.premiereDate, 'yyyy'))).sort();
+    this.channels = this.uniqueValue(SERIALS.map(item => item.network)).sort();
     this.store.pipe(select(selectAllSerials)).subscribe(serials => this.initializeData(serials));
     this.store.pipe(select(selectSerialsTotal)).subscribe(total => this.serialsTotal = total);
     this.subscription.add(this.store.pipe(select(selectSerialsLoading)).subscribe(loading => {
@@ -47,6 +58,18 @@ export class SerialsTableComponent implements OnInit, OnDestroy, AfterViewInit {
     this.error$ = this.store.pipe(select(selectSerialsError));
   }
 
+  public uniqueValue(arr) {
+    const result = [];
+
+    for (let str of arr) {
+      if (!result.includes(str)) {
+        result.push(str);
+      }
+    }
+    return result;
+  }
+
+
   public ngAfterViewInit(): void {
     this.loadSerials();
     const filter$ = this.filterSubject.pipe(
@@ -57,10 +80,30 @@ export class SerialsTableComponent implements OnInit, OnDestroy, AfterViewInit {
         this.filter = value;
       })
     );
-
+    const filterDate$ = this.filterDateSubject.pipe(
+      debounceTime(150),
+      distinctUntilChanged(),
+      tap((value: string) => {
+        if (value === 'all') {
+          this.filterYear = '';
+        } else {
+          this.filterYear = value;
+        }
+      })
+    );
+    const filterChannels$ = this.filterChannelSubject.pipe(
+      debounceTime(150),
+      distinctUntilChanged(),
+      tap((value: string) => {
+        if (value === 'all') {
+          this.filterChannel = '';
+        } else {
+          this.filterChannel = value;
+        }
+      })
+    );
     const sort$ = this.sort.sortChange.pipe(tap(() => this.paginator.pageIndex = 0));
-
-    this.subscription.add(merge(filter$, sort$, this.paginator.page).pipe(
+    this.subscription.add(merge(filter$, filterDate$, filterChannels$, sort$, this.paginator.page).pipe(
       tap(() => this.loadSerials())
     ).subscribe());
   }
@@ -68,6 +111,8 @@ export class SerialsTableComponent implements OnInit, OnDestroy, AfterViewInit {
   private loadSerials(): void {
     this.store.dispatch(new SerialsLoadAction(
       {
+        filterYear: this.filterYear,
+        filterChannel: this.filterChannel,
         filter: this.filter.toLocaleLowerCase(),
         pageIndex: this.paginator.pageIndex,
         pageSize: this.paginator.pageSize,
