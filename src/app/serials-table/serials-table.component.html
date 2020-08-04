@@ -1,0 +1,63 @@
+<div class="customer-content">
+    <div class="table-header">
+        <div class="search-bar">
+          <input class="dc-search" placeholder="Name" (keyup)="filterSubject.next($event.target.value)">
+        </div>
+      </div>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
+      [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell class="dc-content" *matCellDef="let element">{{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="season">
+        <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Season</th>
+        <td mat-cell class="dc-content" *matCellDef="let element"> {{ element.season }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="network">
+        <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Network</th>
+        <td mat-cell class="dc-content" *matCellDef="let element">{{element.network}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+          <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Duration</th>
+          <td mat-cell class="dc-content" *matCellDef="let element">{{element.duration}} min</td>
+        </ng-container>
+
+      <ng-container matColumnDef="premiereDate">
+        <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Premiere</th>
+        <td mat-cell class="dc-content" *matCellDef="let element">{{element.premiereDate | date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="noData">
+        <td mat-cell class="dc-label no-data-cell" *matCellDef="let element"
+          [attr.colspan]="displayedColumns.length">
+          <ng-container *ngIf="!(error$ | async) && !loading">
+            <span class="dc-content">No Customers</span>
+          </ng-container>
+          <ng-container *ngIf="(error$ | async) && !loading">
+            <span class="dc-label">System Failure</span>
+            <span class="dc-content">Error</span>
+            <span class="retry" (click)="retry()">Retry</span>
+          </ng-container>
+          <ng-container *ngIf="loading">
+              <span class="dc-label">Retrieving data...</span>
+            </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></tr>
+      <ng-container *ngIf="serialsTotal && !loading">
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="customer-row"></tr>
+      </ng-container>
+      <ng-container *ngIf="!serialsTotal || loading">
+        <tr mat-row *matRowDef="let row; columns: ['noData'];" class="no-data-row" ></tr>
+      </ng-container>
+    </table>
+    <mat-paginator [length]="serialsTotal" [pageSize]="5"  [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+  </div>
+</div>
